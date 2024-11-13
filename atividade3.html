@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade3</title>
+    <style>
+         body{
+            background: linear-gradient(to left, white, rgb(112, 247, 247), white);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            align-items:baseline;
+            height: 100vh;
+            flex-direction: column;
+        }
+        label{
+            background-color: aqua;
+            padding: 6px;
+            border-radius: 15px;
+            box-shadow: 2px 2px black;
+            margin: 4px;
+        }
+        input{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        button{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        a{
+            padding: 6px;
+            margin: 5px;
+            color: purple;}
+    </style>
+</head>
+<body>
+    <a href="index.html">Voltar aos Links</a>
+    <h2>Adicionar Item à Lista</h2>
+    <input type="text" id="itemTexto" placeholder="Digite o texto do item">
+    <label><input type="radio" name="cores" value="black" checked> Preto</label>
+    <label><input type="radio" name="cores" value="blue"> Azul</label>
+    <label><input type="radio" name="cores" value="green"> Verde</label>
+    <button id="adicionarItem">Adicionar Item</button>
+    <ul id="lista"></ul>
+    <script>
+        document.getElementById("adicionarItem").addEventListener("click", function() {
+            let texto = document.getElementById("itemTexto").value;
+            let cor = document.querySelector('input[name="cores"]:checked').value;
+
+            if (texto.trim() !== "") {
+                let novoItem = document.createElement("li");
+                novoItem.textContent = texto;
+                novoItem.style.color = cor;
+                document.getElementById("lista").appendChild(novoItem);
+                document.getElementById("itemTexto").value = ""; 
+            }
+        });
+    </script>
+</body>
+</html>

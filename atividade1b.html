@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atv 1a</title>
+    <style>
+         body{
+            background: linear-gradient(to left, white, rgb(112, 247, 247), white);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            align-items:baseline;
+            height: 100vh;
+            flex-direction: column;
+        }
+        label{
+            background-color: aqua;
+            padding: 6px;
+            border-radius: 15px;
+            box-shadow: 2px 2px black;
+        }
+        input{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        button{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        p{
+            padding: 6px;
+            margin: 8px;
+        }
+        a{
+            padding: 6px;
+            margin: 5px;
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">Voltar aos Links</a>
+    <h1>Cálculo de Média</h1>
+    <label for="nota1">Digite sua primeira nota:</label>
+    <input type="number" name="nota1" id="nota1">
+    <label for="nota2">Digite sua segunda nota:</label>
+    <input type="number" name="nota2" id="nota2">
+    <button onclick="calcularmedia()">Calcular Média</button>
+
+    <p>Média: <span id="media"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+
+
+<script>
+    function calcularmedia() {
+            let nota1 = parseFloat(document.getElementById("nota1").value);
+            let nota2 = parseFloat(document.getElementById("nota2").value);
+            let media = (nota1 + nota2) / 2;
+            
+            let situacaoElement = document.getElementById("situacao");
+            if (media >= 6) {
+                situacaoElement.innerHTML = "Aprovado";
+                situacaoElement.style.color = "blue";
+            } else {
+                situacaoElement.innerHTML = "Reprovado";
+                situacaoElement.style.color = "red";
+            }
+            document.getElementById("media").innerHTML = media.toFixed(2);
+        }
+</script>
+
+</body>
+</html>

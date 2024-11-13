@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média</title>
+    <style>
+        body {
+            background: linear-gradient(to left, white, rgb(112, 247, 247), white);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        p{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        a{
+            padding: 6px;
+            margin: 5px;
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">Voltar aos Links</a>
+    <p>Média: <span id="media"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+
+    <script>
+        let nota1 = parseFloat(prompt("Digite sua primeira nota:"));
+        let nota2 = parseFloat(prompt("Digite sua segunda nota:"));
+
+        if (isNaN(nota1) || isNaN(nota2)) {
+            alert("Por favor, insira valores numéricos para as notas.");
+        } else {
+            let media = (nota1 + nota2) / 2;
+            document.getElementById("media").innerHTML = media.toFixed(2);
+            let situacaoElement = document.getElementById("situacao");
+            if (media >= 6) {
+                situacaoElement.innerHTML = "Aprovado";
+                situacaoElement.style.color = "blue";
+            } else {
+                situacaoElement.innerHTML = "Reprovado";
+                situacaoElement.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

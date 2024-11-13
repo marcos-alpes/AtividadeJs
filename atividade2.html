@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 2</title>
+    <style>
+        body{
+            background: linear-gradient(to left, white, rgb(112, 247, 247), white);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            align-items:baseline;
+            height: 100vh;
+            flex-direction: column;
+        }
+        label{
+            background-color: aqua;
+            padding: 6px;
+            border-radius: 15px;
+            box-shadow: 2px 2px black;
+        }
+        input{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        button{
+            padding: 6px;
+            margin: 5px;
+            color: black;
+            border-radius: 15px;
+            border: solid 2px black;
+        }
+        a{
+            padding: 6px;
+            margin: 5px;
+            color: purple;
+        }
+        #situacao {
+            font-weight: bold;
+        }
+        .normal { color: green; }
+        .alerta { color: orange; }
+        .perigo { color: red; }
+    </style>
+</head>
+<body>
+    <a href="index.html">Voltar aos Links</a>
+    <h2>Cálculo do IMC</h2>
+    <label for="peso">Digite seu peso (kg):</label>
+    <input type="number" id="peso" step="0.1"><br>
+    <label for="altura">Digite sua altura (m):</label>
+    <input type="number" id="altura" step="0.01"><br><br>
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <p>IMC: <span id="imc"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+
+    <script>
+        function calcularIMC() {
+            let peso = parseFloat(document.getElementById("peso").value);
+            let altura = parseFloat(document.getElementById("altura").value);
+            let imc = peso / (altura * altura);
+
+            document.getElementById("imc").innerHTML = imc.toFixed(2);
+
+            let situacaoElement = document.getElementById("situacao");
+            if (imc < 18.5) {
+                situacaoElement.innerHTML = "Muito abaixo do peso";
+                situacaoElement.className = "perigo";
+            } else if (imc < 24.9) {
+                situacaoElement.innerHTML = "Peso normal";
+                situacaoElement.className = "normal";
+            } else if (imc < 29.9) {
+                situacaoElement.innerHTML = "Acima do peso";
+                situacaoElement.className = "alerta";
+            } else if (imc < 34.9) {
+                situacaoElement.innerHTML = "Obesidade I";
+                situacaoElement.className = "perigo";
+            } else if (imc < 39.9) {
+                situacaoElement.innerHTML = "Obesidade II";
+                situacaoElement.className = "perigo";
+            } else {
+                situacaoElement.innerHTML = "Obesidade III";
+                situacaoElement.className = "perigo";
+            }
+        }
+    </script>
+</body>
+</html>
